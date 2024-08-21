@@ -1,4 +1,4 @@
-This repository collects code and documentation about the **USARIS** project [ST/Y003713/1]
+This repository collects code and documentation produced in the **USARIS** project [ST/Y003713/1]
 
 **USARIS: *Uncertainty quantification and sensitivity analysis for resilient infrastructure systems***
 
