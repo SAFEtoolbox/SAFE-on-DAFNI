@@ -1,0 +1,74 @@
+kind: M
+api_version: v1beta3
+metadata: 
+  display_name: SAFE-Hymod-test
+  contact_point_name: Saskia Salwey
+  contact_point_email: saskia.salwey@bristol.ac.uk
+  publisher: University of Bristol 
+  name: safe-hymod
+  summary: simple rainfall runoff model. 
+  type: model
+  description: Simulation of the HyMod rainfall-runoff model.
+spec: 
+  inputs: 
+    parameters:
+      - name: Sm 
+        title: Sm
+        description: maximum soil moisture [mm]
+        type: number
+        default: 200
+        min: 0
+        max: 400
+        required: true
+
+      - name: beta
+        title: beta
+        description: exponent in the soil moisture routine [-]
+        type: number
+        default: 0.5
+        min: 0
+        max: 2
+        required: true
+
+      - name: alfa
+        title: alfa
+        description: partition coefficient [-]
+        type: number
+        default: 0.7
+        min: 0
+        max: 2
+        required: true
+
+      - name: Rs
+        title: Rs
+        description: slow reservoir coefficient [1/Dt]
+        type: number
+        default: 0.05
+        min: 0
+        max: 1
+        required: true
+
+      - name: Rf
+        title: Rf
+        description: fast reservoir coefficient [1/Dt]
+        type: number
+        default: 0.6
+        min: 0.1
+        max: 1
+        required: true
+
+    dataslots:
+      - name: HyMod input files
+        description: >
+          rainfall, evaporation and flow
+        default: 
+          - 7a8826b8-5236-4220-842b-1ff453a0c5c5
+        path: inputs/
+        required: true
+
+  outputs:
+    datasets:
+      - name: outputs
+        type: folder 
+        description: >
+          output files 
