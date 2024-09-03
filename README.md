@@ -1,4 +1,4 @@
-This repository collects code and documentation produced in the **USARIS project** (*Uncertainty quantification and sensitivity analysis for resilient infrastructure systems*) under the DAFNI Centre of Excellence for Resilient Infrastructure Analysis (UKRI Building a Secure and Resilient World programme - grant number ST/Y003713/1)
+This repository collects code and documentation produced in the **USARIS project** (*Uncertainty quantification and sensitivity analysis for resilient infrastructure systems*) funded under the DAFNI Centre of Excellence for Resilient Infrastructure Analysis (UKRI Building a Secure and Resilient World programme - grant number ST/Y003713/1)
 
 **Project Description**
 
