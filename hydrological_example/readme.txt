@@ -7,6 +7,6 @@ To Dockerside the model you need:
 
 To upload and run the model on DAFNI you need: 
 1) The model definition file
-2) The input data file LeafCatchment.txt
+2) The input data file LeafCatch.txt
 
 To carry out a simple sensiivity analysis the GSA_PAWN.ipynb can be run in the visualisation part of DAFNI. 
