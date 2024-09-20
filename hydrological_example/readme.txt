@@ -3,7 +3,7 @@ This folder contains all the files needed to (1) dockerise the HyMod model, (2) 
 To Dockerside the model you need: 
 1) The dockerfile
 2) The requirements.txt file which is drawn on by the Dockerfile 
-3) The scripts needed to run the model (run.py and HyMod.py) 
+3) The scripts needed to run the model (run.py, util.py and HyMod.py) 
 
 To upload and run the model on DAFNI you need: 
 1) The model definition file
