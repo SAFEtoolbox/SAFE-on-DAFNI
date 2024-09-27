@@ -1,4 +1,4 @@
-This folder contains all the files needed to (1) dockerise the HyMod model, (2) run it on DAFNI and (3) carry out a simple sensitivity analysis on the results. 
+This folder contains all the files needed to run a global sensitivity analysis on the DAFNI platform using the Hymod hydroloigcal model and tools from the SAFEtoolbox. This process has three main steps, (1) dockerise the HyMod model, (2) run it on DAFNI and (3) carry out a simple sensitivity analysis on the results. 
 
 To Dockerside the model you need: 
 1) The Dockerfile
