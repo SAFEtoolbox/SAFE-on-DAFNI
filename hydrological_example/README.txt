@@ -11,6 +11,6 @@ To upload and run the model on DAFNI you need:
 
 To carry out a simple sensiivity analysis the GSA_PAWN.ipynb can be run in the visualisation part of a DAFNI worflow. 
 
-[flow chart](hydrological_example/flow_chart.png)
+![flow chart](hydrological_example/flow_chart.png)
 
 
