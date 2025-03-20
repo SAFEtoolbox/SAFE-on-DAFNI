@@ -1,0 +1,85 @@
+kind: M
+api_version: v1beta3
+metadata: 
+  display_name: Hymod Hydrological Model
+  contact_point_name: Saskia Salwey
+  contact_point_email: saskia.salwey@bristol.ac.uk
+  publisher: University of Bristol 
+  name: hymod
+  summary: Simple hydrological model. 
+  type: model
+  description: This simple hydrological model has 5 parameters and returns timeseries of river flows from timeseries of meterological forcings (rainfall and temperature). The parameters represent some key basin characteristics that determine the transformation of rainfall into flow, such as the soil's water holding capacity and the velocity with which water travels in the sub-surface. 
+  source_code: https://github.com/SAFEtoolbox/SAFE-on-DAFNI/tree/main
+spec: 
+  inputs: 
+    parameters:
+      - name: Sm 
+        title: Sm
+        description: Maximum soil moisture [mm]
+        type: number
+        default: 200
+        min: 0
+        max: 400
+        required: true
+
+      - name: beta
+        title: beta
+        description: Exponent in the soil moisture routine [-]
+        type: number
+        default: 0.5
+        min: 0
+        max: 2
+        required: true
+
+      - name: alfa
+        title: alfa
+        description: Partition coefficient [-]
+        type: number
+        default: 0.7
+        min: 0
+        max: 1
+        required: true
+
+      - name: Rs
+        title: Rs
+        description: Slow reservoir coefficient [1/Dt]
+        type: number
+        default: 0.05
+        min: 0
+        max: 0.1
+        required: true
+
+      - name: Rf
+        title: Rf
+        description: Fast reservoir coefficient [1/Dt]
+        type: number
+        default: 0.6
+        min: 0.1
+        max: 1
+        required: true
+
+      - name: ID
+        title: ID
+        description: ID for each output file
+        type: integer
+        default: 0
+        min: 0
+        max: 1000000
+        required: true
+
+
+    dataslots:
+      - name: HyMod input files
+        description: >
+          Rainfall, Evaporation and Flow
+        default: 
+          - 7a8826b8-5236-4220-842b-1ff453a0c5c5
+        path: inputs/
+        required: true
+
+  outputs:
+    datasets:
+      - name: outputs
+        type: folder 
+        description: >
+          output files 
