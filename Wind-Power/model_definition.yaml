@@ -1,0 +1,101 @@
+kind: M
+api_version: v1beta3
+metadata: 
+  display_name: Simple Wind Power Model
+  contact_point_name: Saskia Salwey
+  contact_point_email: saskia.salwey@bristol.ac.uk
+  publisher: University of Bristol 
+  name: wind-power
+  summary: Simple wind power model. 
+  type: model
+  description: This simple wind power model calculates wind power generation from windspeed timeseries using a power curve. The model outputs the annual mean capacity factor. 
+  source_code: https://github.com/SAFEtoolbox/SAFE-on-DAFNI/tree/main
+spec: 
+  inputs: 
+    parameters:
+      - name: wind_height 
+        title: wind_height
+        description: Height at which the windspeed is extracted (10 or 100m). 
+        type: integer
+        default: 0
+        min: 0
+        max: 2
+        required: true
+
+      - name: year
+        title: year
+        description: Year which we are simulating wind power for. 
+        type: integer
+        default: 1940
+        min: 1940
+        max: 2020
+        required: true
+
+      - name: timestep
+        title: timestep
+        description: Timestep windspeed data is taken at. 
+        type: integer
+        default: 0
+        min: 0
+        max: 4
+        required: true
+
+      - name: pc
+        title: pc
+        description: Index of power curve to be selected from normalised dataset. 
+        type: integer
+        default: 0
+        min: 0
+        max: 17
+        required: true
+
+      - name: alpha
+        title: alpha
+        description: Alpha coefficient from the wind power law. 
+        type: number
+        default: 0.14
+        min: 0.05
+        max: 0.23
+        required: true
+
+      - name: hubheight
+        title: hubheight
+        description: Height of the wind turbine hub. 
+        type: number
+        default: 100
+        min: 61
+        max: 120
+        required: true
+
+      - name: ID
+        title: ID
+        description: ID for identifying items in loop
+        type: integer
+        default: 0
+        min: 0
+        max: 1000000
+        required: true
+
+    dataslots:
+      - name: Input climate data
+        description: >
+          climate input data from ERA5
+        default: 
+          - 3cf8a82c-bc63-4f8c-9cdd-1f747dc12733
+        path: inputs/
+        required: true
+
+      - name: Input power curves
+        description: >
+          Normalised power curves 
+        default: 
+          - 0366550e-9c0e-4a6a-bfdc-496595e87d75
+        path: inputs/
+        required: true
+
+  outputs:
+    datasets:
+      - name: outputs
+        type: folder 
+        description: >
+          output files 

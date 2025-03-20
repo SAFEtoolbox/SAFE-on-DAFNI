@@ -1,0 +1,6 @@
+numpy==1.24.4
+pandas==2.0.3
+xarray==2024.6.0
+scipy==1.13.1
+netcdf4==1.6.4
+dask[complete]==2023.12.0
