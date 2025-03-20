@@ -1,0 +1,101 @@
+kind: M
+api_version: v1beta3
+metadata: 
+  display_name: Pywr Thames Model
+  contact_point_name: Saskia Salwey
+  contact_point_email: saskia.salwey@bristol.ac.uk
+  publisher: University of Bristol 
+  name: pywr-thames
+  summary: A simple Pywr model using the river Thames. 
+  type: model
+  description: This model uses river Thames inflows. However it does not represent the Thames Water system or use any data from TWUL. Code and data for this model are based on the Thames example provided in the Pywr repository. 
+spec: 
+  inputs: 
+    parameters:
+      - name: mfr_cost 
+        title: mfr_cost
+        description: rivergauge mrf1 cost represented as a weight
+        type: number
+        default: 0.18
+        min: 0
+        max: 1
+        required: true
+
+      - name: res_cost
+        title: res_cost
+        description: reservoir1 cost represented as a weight
+        type: number
+        default: 0.56
+        min: 0
+        max: 1
+        required: true
+
+      - name: demand_cost
+        title: demand_cost
+        description: demand1 cost represented as a weight
+        type: number
+        default: 0.26
+        min: 0
+        max: 1
+        required: true
+
+      - name: mfr
+        title: mfr
+        description: minimum required flow
+        type: number
+        default: 0.6
+        min: 0.4
+        max: 1.5
+        required: true
+
+      - name: demand_baseline
+        title: demand_baseline
+        description: baseline demand 
+        type: number
+        default: 1
+        min: 1
+        max: 3
+        required: true
+
+      - name: restriction_scenario
+        title: restriction_scenario
+        description: restriction scenario, must be selected from 3 options representing the default scenario, an optimistic scenario and a conservative scenario
+        type: integer
+        default: 0
+        min: 0
+        max: 3
+        required: true
+
+      - name: time_period
+        title: time_period
+        description: time period for which the model is run
+        type: integer
+        default: 0
+        min: 0
+        max: 3
+        required: true
+
+      - name: ID
+        title: ID
+        description: ID for each output file
+        type: integer
+        default: 0
+        min: 0
+        max: 1000000
+        required: true
+
+    dataslots:
+      - name: thames_stochastic_flow.gz
+        description: >
+          thames_stochastic_flow
+        default: 
+          - d91a00c5-4368-4603-85ca-c5f1ab636e65
+        path: inputs/
+        required: true
+
+  outputs:
+    datasets:
+      - name: outputs
+        type: folder 
+        description: >
+          output files 
