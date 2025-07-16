@@ -1,1 +1,2 @@
-
+Code to dockerize a simple water resource model (Pywr) for upload to DAFNI platform (https://www.dafni.ac.uk/), and post-processing jupyter notebook to analyse the input-output samples generated on DAFNI.
+The model original code is comes from https://github.com/pywr/pywr
