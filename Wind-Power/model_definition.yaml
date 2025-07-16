@@ -1,101 +1,118 @@
-kind: M
-api_version: v1beta3
-metadata: 
+metadata:
+  description: This is a simple model for estimating power generation from a wind turbine. 
+    The model takes as input a time series of windspeed data, use a power law curve to extrapolate windspeed
+    at the hub height, convert hub height windspeed into power through a power curve,
+    and finally returns as output the annual mean capacity factor 
+    (that is, the percentage of wind energy actually generated compared to the maximum generation 
+    if the turbine could operate at maximum power all the time). 
+    The windspeed data used in this model implementation come from the ECMWF Reanalysis v5 (ERA5) for the UK.
+    This dataset (called ERA5_windspeed_data) covers the period 1940-2020
+    but the model runs against one year extracted from this period.
+    Windspeed data can be retrieved from the dataset at either 10 or 100 m above the ground
+    and at four different temporal resolutions. 
+    The model parameters are  
+    1) wind height, the height at which the windspeed data refer to;
+    2) year, the year of windspeed data to be used for simulation;
+    3) timestep, the identifier of the temporal resolution of windspeed data to be used
+    (0, hourly, 1, 6-hourly, 2, daily, 4, at midnight);
+    4) pc, the identifier of the turbine's power curve to be used (the power curve is extracted from the
+     offshore_normalised_power_curves dataset which includes 18 normalised power curves for turbines
+      typically found in the UK)
+    5) alpha, the coefficient for the power law curve used to translate windspeed from wind_height to the hub height;
+    6) hubheight, the height of the turbine's hub
+     More information about the model can be found in
+     Bloomfield et al 2018, ERL doi 10.1088/1748-9326/aabff9
   display_name: Simple Wind Power Model
-  contact_point_name: Saskia Salwey
-  contact_point_email: saskia.salwey@bristol.ac.uk
-  publisher: University of Bristol 
   name: wind-power
-  summary: Simple wind power model. 
-  type: model
-  description: This simple wind power model calculates wind power generation from windspeed timeseries using a power curve. The model outputs the annual mean capacity factor. 
+  publisher: University of Bristol
+  summary: Simple wind power model.
+  contact_point_name: Francesca Pianosi
+  contact_point_email: francesca.pianosi@bristol.ac.uk
+  licence: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  subject: Environment
+  project_name: "USARIS: Uncertainty quantification and sensitivity analysis for
+    resilient infrastructure systems"
+  project_url: https://research-information.bris.ac.uk/en/projects/uncertainty-quantification-and-sensitivity-analysis-for-resilient
   source_code: https://github.com/SAFEtoolbox/SAFE-on-DAFNI/tree/main
-spec: 
-  inputs: 
-    parameters:
-      - name: wind_height 
-        title: wind_height
-        description: Height at which the windspeed is extracted (10 or 100m). 
-        type: integer
-        default: 0
-        min: 0
-        max: 2
-        required: true
-
-      - name: year
-        title: year
-        description: Year which we are simulating wind power for. 
-        type: integer
-        default: 1940
-        min: 1940
-        max: 2020
-        required: true
-
-      - name: timestep
-        title: timestep
-        description: Timestep windspeed data is taken at. 
-        type: integer
-        default: 0
-        min: 0
-        max: 4
-        required: true
-
-      - name: pc
-        title: pc
-        description: Index of power curve to be selected from normalised dataset. 
-        type: integer
-        default: 0
-        min: 0
-        max: 17
-        required: true
-
-      - name: alpha
-        title: alpha
-        description: Alpha coefficient from the wind power law. 
-        type: number
-        default: 0.14
-        min: 0.05
-        max: 0.23
-        required: true
-
-      - name: hubheight
-        title: hubheight
-        description: Height of the wind turbine hub. 
-        type: number
-        default: 100
-        min: 61
-        max: 120
-        required: true
-
-      - name: ID
-        title: ID
-        description: ID for identifying items in loop
-        type: integer
-        default: 0
-        min: 0
-        max: 1000000
-        required: true
-
+spec:
+  inputs:
     dataslots:
       - name: Input climate data
-        description: >
-          climate input data from ERA5
-        default: 
+        path: inputs/
+        default:
           - 3cf8a82c-bc63-4f8c-9cdd-1f747dc12733
-        path: inputs/
         required: true
-
+        description: |
+          climate input data from ERA5
       - name: Input power curves
-        description: >
-          Normalised power curves 
-        default: 
-          - 0366550e-9c0e-4a6a-bfdc-496595e87d75
         path: inputs/
+        default:
+          - 0366550e-9c0e-4a6a-bfdc-496595e87d75
         required: true
-
+        description: |
+          Normalised power curves 
+    parameters:
+      - max: 2
+        min: 0
+        name: wind_height
+        type: integer
+        title: wind_height
+        default: 0
+        required: true
+        description: Height at which the windspeed is extracted (10 or 100m).
+      - max: 2020
+        min: 1940
+        name: year
+        type: integer
+        title: year
+        default: 1940
+        required: true
+        description: Year which we are simulating wind power for.
+      - max: 4
+        min: 0
+        name: timestep
+        type: integer
+        title: timestep
+        default: 0
+        required: true
+        description: Timestep windspeed data is taken at.
+      - max: 17
+        min: 0
+        name: pc
+        type: integer
+        title: pc
+        default: 0
+        required: true
+        description: Index of power curve to be selected from normalised dataset.
+      - max: 0.23
+        min: 0.05
+        name: alpha
+        type: number
+        title: alpha
+        default: 0.14
+        required: true
+        description: Alpha coefficient from the wind power law.
+      - max: 120
+        min: 61
+        name: hubheight
+        type: number
+        title: hubheight
+        default: 100
+        required: true
+        description: Height of the wind turbine hub.
+      - max: 1000000
+        min: 0
+        name: ID
+        type: integer
+        title: ID
+        default: 0
+        required: true
+        description: ID for identifying items in loop
   outputs:
     datasets:
       - name: outputs
-        type: folder 
-        description: >
-          output files 
+        type: folder
+        description: "output files: 1) a file containing the simulated mean annual capacity factor,
+	  2) a file containing a copy of the parameter values used in the model run  "
+api_version: v1beta3
+kind: M
