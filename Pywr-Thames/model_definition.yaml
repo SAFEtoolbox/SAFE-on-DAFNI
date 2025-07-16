@@ -1,101 +1,125 @@
-kind: M
-api_version: v1beta3
-metadata: 
-  display_name: Pywr Thames Model
-  contact_point_name: Saskia Salwey
-  contact_point_email: saskia.salwey@bristol.ac.uk
-  publisher: University of Bristol 
+metadata:
+  description: Pywr is a generalised water resource network model for simulating 
+     water allocation across a managed water system, for given hydrological inflows. 
+     In this implementation, the model is applied to an idealised and very simplified representation 
+     of the Thames water resource system, which includes one reservoir and one demand node. 
+     This model set-up is one of the examples provided along
+     with the Pywr distribution (https://github.com/pywr). 
+     The inflow time series is given in the thames_stochastic_flow.gz data file. 
+     This is a synthetic dataset that is also provided by Pywr developers as part of the Thames example.
+     The model also takes as input seven parameters. 
+     1) demand_baseline, the value of
+     the water demand to be met at each timestep; 2) mfr, the value of the minimum required flow
+     downstream of the reservoir; 3)4)5) demand_cost, mfr_cost and res_cost, three parameters used by 
+     the model to weight the importance of each allocation objective (to met the water demand,
+     to meet the minimum required flow target, and to store water in the reservoir); 
+     6) restriction_scenario, the rule by which restrictions on water supply are triggered 
+     (a conservative scenario, the default one, and an optimistic one); 7) time_period, the portion
+     of the available inflow time series to be used for the simulation (the first 33 years, the 33 years
+     in the middle, the last 33 years).
+     More information about the model can be found in
+     Tomlinson et al 2020, EMS doi 10.1016/j.envsoft.2020.104635
+  display_name: Pywr water resource model for Thames
   name: pywr-thames
-  summary: A simple Pywr model using the river Thames. 
-  type: model
-  description: This model uses river Thames inflows. However it does not represent the Thames Water system or use any data from TWUL. Code and data for this model are based on the Thames example provided in the Pywr repository. 
-spec: 
-  inputs: 
-    parameters:
-      - name: mfr_cost 
-        title: mfr_cost
-        description: rivergauge mrf1 cost represented as a weight
-        type: number
-        default: 0.18
-        min: 0
-        max: 1
-        required: true
-
-      - name: res_cost
-        title: res_cost
-        description: reservoir1 cost represented as a weight
-        type: number
-        default: 0.56
-        min: 0
-        max: 1
-        required: true
-
-      - name: demand_cost
-        title: demand_cost
-        description: demand1 cost represented as a weight
-        type: number
-        default: 0.26
-        min: 0
-        max: 1
-        required: true
-
-      - name: mfr
-        title: mfr
-        description: minimum required flow
-        type: number
-        default: 0.6
-        min: 0.4
-        max: 1.5
-        required: true
-
-      - name: demand_baseline
-        title: demand_baseline
-        description: baseline demand 
-        type: number
-        default: 1
-        min: 1
-        max: 3
-        required: true
-
-      - name: restriction_scenario
-        title: restriction_scenario
-        description: restriction scenario, must be selected from 3 options representing the default scenario, an optimistic scenario and a conservative scenario
-        type: integer
-        default: 0
-        min: 0
-        max: 3
-        required: true
-
-      - name: time_period
-        title: time_period
-        description: time period for which the model is run
-        type: integer
-        default: 0
-        min: 0
-        max: 3
-        required: true
-
-      - name: ID
-        title: ID
-        description: ID for each output file
-        type: integer
-        default: 0
-        min: 0
-        max: 1000000
-        required: true
-
+  publisher: University of Bristol
+  summary: simple water resource system model to simulate water movement and storing
+     in a (very) simplified representation of the Thames Water system
+  contact_point_name: Francesca Pianosi
+  contact_point_email: francesca.pianosi@bristol.ac.uk
+  licence: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  subject: Environment
+  project_name: "USARIS: Uncertainty quantification and sensitivity analysis for
+    resilient infrastructure systems"
+  project_url: https://research-information.bris.ac.uk/en/projects/uncertainty-quantification-and-sensitivity-analysis-for-resilient
+  source_code: https://github.com/SAFEtoolbox/SAFE-on-DAFNI/tree/main
+spec:
+  inputs:
     dataslots:
       - name: thames_stochastic_flow.gz
-        description: >
-          thames_stochastic_flow
-        default: 
-          - d91a00c5-4368-4603-85ca-c5f1ab636e65
         path: inputs/
+        default:
+          - d91a00c5-4368-4603-85ca-c5f1ab636e65
         required: true
-
+        description: |
+          thames_stochastic_flow
+    parameters:
+      - max: 1
+        min: 0
+        name: mfr_cost
+        type: number
+        title: mfr_cost
+        default: 0.18
+        required: true
+        description: rivergauge mrf1 cost represented as a weight
+      - max: 1
+        min: 0
+        name: res_cost
+        type: number
+        title: res_cost
+        default: 0.56
+        required: true
+        description: reservoir1 cost represented as a weight
+      - max: 1
+        min: 0
+        name: demand_cost
+        type: number
+        title: demand_cost
+        default: 0.26
+        required: true
+        description: demand1 cost represented as a weight
+      - max: 1.5
+        min: 0.4
+        name: mfr
+        type: number
+        title: mfr
+        default: 0.6
+        required: true
+        description: minimum required flow
+      - max: 3
+        min: 1
+        name: demand_baseline
+        type: number
+        title: demand_baseline
+        default: 1
+        required: true
+        description: baseline demand
+      - max: 3
+        min: 0
+        name: restriction_scenario
+        type: integer
+        title: restriction_scenario
+        default: 0
+        required: true
+        description: restriction scenario, must be selected from 3 options representing
+          the default scenario, an optimistic scenario and a conservative
+          scenario
+      - max: 3
+        min: 0
+        name: time_period
+        type: integer
+        title: time_period
+        default: 0
+        required: true
+        description: time period for which the model is run
+      - max: 1000000
+        min: 0
+        name: ID
+        type: integer
+        title: ID
+        default: 0
+        required: true
+        description: ID for each output file
   outputs:
     datasets:
       - name: outputs
-        type: folder 
-        description: >
-          output files 
+        type: folder
+        description: "output files: 1) a file containing five summary statistics of the
+           model simulation run: the mean summer reservoir storage (June to August),
+           the mean winter reservoir storage (December to February),
+           the number of days when the mfr is not met,
+           the number of days when restrictions to water supply are implemented,
+           the number of days where the demand is not met.
+           2) a file containing a copy
+           of the parameter values used in the model run   "
+api_version: v1beta3
+kind: M
