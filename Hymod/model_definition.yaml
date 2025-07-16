@@ -1,85 +1,95 @@
-kind: M
-api_version: v1beta3
-metadata: 
-  display_name: Hymod Hydrological Model
-  contact_point_name: Saskia Salwey
-  contact_point_email: saskia.salwey@bristol.ac.uk
-  publisher: University of Bristol 
+metadata:
+  description: Hymod is a lumped (0D) rainfall-runoff model that takes time series
+    of rainfall and potential evapotranspiration as forcing inputs and returns a
+    time series of streamflow as output. In this implementation, the model is
+    applied to the Leaf catchment in the USA. The input time series is given in
+    the Leaf Catchment Data file (note that this file also includes time series
+    of observed streamflows, which are not needed to run the model but can be
+    used to evaluate the accuracy of the model predictions). The model also
+    takes as input five parameters, which represent key basin characteristics.
+    These are 1) Sm, the maximum soil moisture (in mm), 2) beta, the exponent in
+    the soil moisture accounting routine (-), 3) alpha, the partition
+    coefficient (-), 4) Rs, the slow reservoir coefficient (-), 5) Rf, the fast
+    reservoir coefficient (-). More information about the model can be found in
+    Wagener et al 2001, HESS doi 10.5194/hess-5-13-2001
+  display_name: Hymod rainfall-runoff model
   name: hymod
-  summary: Simple hydrological model. 
-  type: model
-  description: This simple hydrological model has 5 parameters and returns timeseries of river flows from timeseries of meterological forcings (rainfall and temperature). The parameters represent some key basin characteristics that determine the transformation of rainfall into flow, such as the soil's water holding capacity and the velocity with which water travels in the sub-surface. 
+  publisher: University of Bristol
+  summary: simple lumped hydrological model to predict streamflow given mean
+    rainfall and potential evapotranspiration over a catchment
+  contact_point_name: Francesca Pianosi
+  contact_point_email: francesca.pianosi@bristol.ac.uk
+  licence: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  subject: Environment
+  project_name: "USARIS: Uncertainty quantification and sensitivity analysis for
+    resilient infrastructure systems"
+  project_url: https://research-information.bris.ac.uk/en/projects/uncertainty-quantification-and-sensitivity-analysis-for-resilient
   source_code: https://github.com/SAFEtoolbox/SAFE-on-DAFNI/tree/main
-spec: 
-  inputs: 
-    parameters:
-      - name: Sm 
-        title: Sm
-        description: Maximum soil moisture [mm]
-        type: number
-        default: 200
-        min: 0
-        max: 400
-        required: true
-
-      - name: beta
-        title: beta
-        description: Exponent in the soil moisture routine [-]
-        type: number
-        default: 0.5
-        min: 0
-        max: 2
-        required: true
-
-      - name: alfa
-        title: alfa
-        description: Partition coefficient [-]
-        type: number
-        default: 0.7
-        min: 0
-        max: 1
-        required: true
-
-      - name: Rs
-        title: Rs
-        description: Slow reservoir coefficient [1/Dt]
-        type: number
-        default: 0.05
-        min: 0
-        max: 0.1
-        required: true
-
-      - name: Rf
-        title: Rf
-        description: Fast reservoir coefficient [1/Dt]
-        type: number
-        default: 0.6
-        min: 0.1
-        max: 1
-        required: true
-
-      - name: ID
-        title: ID
-        description: ID for each output file
-        type: integer
-        default: 0
-        min: 0
-        max: 1000000
-        required: true
-
-
+spec:
+  inputs:
     dataslots:
       - name: HyMod input files
-        description: >
-          Rainfall, Evaporation and Flow
-        default: 
-          - 7a8826b8-5236-4220-842b-1ff453a0c5c5
         path: inputs/
+        default:
+          - 7a8826b8-5236-4220-842b-1ff453a0c5c5
         required: true
-
+        description: |
+          Rainfall, Evaporation and Flow
+    parameters:
+      - max: 400
+        min: 0
+        name: Sm
+        type: number
+        title: Sm
+        default: 200
+        required: true
+        description: Maximum soil moisture [mm]
+      - max: 2
+        min: 0
+        name: beta
+        type: number
+        title: beta
+        default: 0.5
+        required: true
+        description: Exponent in the soil moisture routine [-]
+      - max: 1
+        min: 0
+        name: alfa
+        type: number
+        title: alfa
+        default: 0.7
+        required: true
+        description: Partition coefficient [-]
+      - max: 0.1
+        min: 0
+        name: Rs
+        type: number
+        title: Rs
+        default: 0.05
+        required: true
+        description: Slow reservoir coefficient [1/Dt]
+      - max: 1
+        min: 0.1
+        name: Rf
+        type: number
+        title: Rf
+        default: 0.6
+        required: true
+        description: Fast reservoir coefficient [1/Dt]
+      - max: 1000000
+        min: 0
+        name: ID
+        type: integer
+        title: ID
+        default: 0
+        required: true
+        description: ID for each output file
   outputs:
     datasets:
       - name: outputs
-        type: folder 
-        description: >
-          output files 
+        type: folder
+        description: "output files: 1) a file containing the simulated time series of
+          streamflow resulting from the model run, 2) a file containing a copy
+          of the parameter values used in the model run   "
+api_version: v1beta3
+kind: M
