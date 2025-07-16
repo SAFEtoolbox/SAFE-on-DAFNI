@@ -1,1 +1,1 @@
-
+Code to dockerize a simple rainfall-runoff model for upload to DAFNI platform (https://www.dafni.ac.uk/), and post-processing jupyter notebook to analyse the input-output samples generated on DAFNI
