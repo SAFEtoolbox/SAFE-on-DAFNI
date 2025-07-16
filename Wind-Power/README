@@ -1,1 +1,2 @@
-
+Code to dockerize a simple wind power model for upload to DAFNI platform (https://www.dafni.ac.uk/), and post-processing jupyter notebook to analyse the input-output samples generated on DAFNI.
+NOTE: the code requires two additional datasets to run: ERA5_windspeed_data (a collection of netcdf files) and offshore_normalised_power_curves (csv file), these are available on DAFNI)
