@@ -1,1 +1,5 @@
-Code to dockerize the HyMod lumped rainfall-runoff model for upload to DAFNI platform (https://www.dafni.ac.uk/) and jupyter notebook to analyse the input-output samples generated on DAFNI via the parameter sweep functionality, and quantify uncertainty and sensitivity of model outputs. See model_definition.yaml for more details.
+Code to dockerize the HyMod lumped rainfall-runoff model for upload to DAFNI platform (https://www.dafni.ac.uk/),
+and jupyter notebook to analyse the input-output samples generated on DAFNI via the parameter sweep functionality.
+The ultimate goal is to quantify the uncertainty and sensitivity of model outputs. 
+See model_definition.yaml for more details on the model, 
+and the jupyter notebook for more details on the uncertainty and sensitivity analysis.
