@@ -1,2 +1,6 @@
-Code to dockerize a simple water resource model (Pywr) for upload to DAFNI platform (https://www.dafni.ac.uk/), and post-processing jupyter notebook to analyse the input-output samples generated on DAFNI.
-The model original code is comes from https://github.com/pywr/pywr
+Code to dockerize the Pywr water resource system model for upload to DAFNI platform (https://www.dafni.ac.uk/),
+and jupyter notebook to analyse the input-output samples generated on DAFNI via the parameter sweep functionality.
+The ultimate goal is to quantify the uncertainty and sensitivity of model outputs. 
+The model original code comes from https://github.com/pywr/pywr (version 1, Thames example)
+See model_definition.yaml for more details on the model, 
+and the jupyter notebook for more details on the uncertainty and sensitivity analysis.
