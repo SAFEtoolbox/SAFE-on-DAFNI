@@ -17,3 +17,7 @@ Ultimately the project will contribute to enable and promote best practices for 
 **Webpage**
 
 https://research-information.bris.ac.uk/en/projects/uncertainty-quantification-and-sensitivity-analysis-for-resilient
+
+**Binder**
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SAFEtoolbox/SAFE-on-DAFNI/HEAD)
