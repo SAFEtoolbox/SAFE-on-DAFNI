@@ -18,6 +18,8 @@ Ultimately the project will contribute to enable and promote best practices for 
 
 https://research-information.bris.ac.uk/en/projects/uncertainty-quantification-and-sensitivity-analysis-for-resilient
 
-To recreate code from **'Uncertainty quantification and attribution for resilient infrastructure systems'** paper submitted to Climate Resilience and Sustainability use the binder below:
+This repository has two main types of information, in the DAFNI folder are examples of water and energy models which can be uploaded to the DAFNI platform to carry out sensitivity analysis. In the main repo is the code to reproduce the workflow from the **'Uncertainty quantification and attribution for resilient infrastructure systems'** paper submitted to Climate Resilience and Sustainability using the binder below: 
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SAFEtoolbox/SAFE-on-DAFNI/HEAD)
+
+This code can also be downloaded and run locally. 
