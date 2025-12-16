@@ -1,0 +1,27 @@
+name: usaris-wind-sensitivity
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+
+  # Core scientific stack
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+
+  # NetCDF / climate data
+  - xarray
+  - netcdf4
+  - h5netcdf
+
+  # Sensitivity analysis + dependencies
+  - pip
+
+  # Optional but strongly recommended
+  - bottleneck        # speeds up xarray ops
+  - numba             # speeds up numerical loops
+
+  # Install safepython via pip (not on conda-forge)
+  - pip:
+      - safepython
