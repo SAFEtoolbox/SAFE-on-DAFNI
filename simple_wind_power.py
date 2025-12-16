@@ -62,7 +62,7 @@ def wind_power_model_run(X, power_curves):
     elif int(X[1]) == 3: 
         timestep = '_midnight'
         
-    wind_data = f'C:\\Users\\Salwe001\\OneDrive - Universiteit Utrecht\\Documents\\papers\\usaris\\code\\ERA5_timestep_point\\' + 'ERA5_EU_1hr_uv100m_' + str(int(X[5])) + timestep + '.nc'
+    wind_data = f'data/'+ 'ERA5_EU_1hr_uv100m_' + str(int(X[5])) + timestep + '.nc'
     if int(X[0]) == 0:
         hubheight_u = 'u10' 
         hubheight_v = 'v10'
@@ -111,3 +111,4 @@ def wind_power_model_run(X, power_curves):
     return np.array([ WP_mean,WP_median,  max_length_days, avg_length, num_events])
 
     
+
