@@ -18,6 +18,6 @@ Ultimately the project will contribute to enable and promote best practices for 
 
 https://research-information.bris.ac.uk/en/projects/uncertainty-quantification-and-sensitivity-analysis-for-resilient
 
-**Binder**
+**Binder to recreate code from 'Uncertainty quantification and attribution for resilient infrastructure systems' paper submitted to Climate Resilience and Sustainability**
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SAFEtoolbox/SAFE-on-DAFNI/HEAD)
