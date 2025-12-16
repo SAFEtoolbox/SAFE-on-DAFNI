@@ -14,9 +14,11 @@ The goal of this project is to set the foundations for integrating UQ&SA functio
 the UK *Data & Analytics Facility for National Infrastructure* (https://www.dafni.ac.uk/). 
 Ultimately the project will contribute to enable and promote best practices for responsible modelling in the DAFNI users community.
 
-**Webpage**
+**Project Webpage**
 
 https://research-information.bris.ac.uk/en/projects/uncertainty-quantification-and-sensitivity-analysis-for-resilient
+
+**Information contained in repository**
 
 This repository has two main types of information, in the DAFNI folder are examples of water and energy models which can be uploaded to the DAFNI platform to carry out sensitivity analysis. In the main repo is the code to reproduce the workflow from the **'Uncertainty quantification and attribution for resilient infrastructure systems'** paper submitted to Climate Resilience and Sustainability using the binder below: 
 
