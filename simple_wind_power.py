@@ -20,8 +20,7 @@ def load_power_curves(pc_array, pc_row_num):
 
 def load_wind_speed_and_take_to_hubheight(path_to_wind_speed, C1, C2, longitude, latitude, alpha, hubheight):
     ds = xr.open_dataset(
-    path_to_wind_speed,
-    combine="by_coords"
+    path_to_wind_speed
     ).load()
 
     # Select the variables of interest
@@ -111,6 +110,7 @@ def wind_power_model_run(X, power_curves):
     return np.array([ WP_mean,WP_median,  max_length_days, avg_length, num_events])
 
     
+
 
 
 
